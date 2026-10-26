@@ -24,7 +24,9 @@
   "type": "module",
   "scripts": {
     "start": "node src/index.js",
-    "test": "node --test"
+    "test": "node --test",
+    "tray": "electron src/tray/main.js",
+    "dist": "electron-builder"
   },
   "engines": {
     "node": ">=18"
@@ -32,5 +34,33 @@
   "license": "MIT",
   "dependencies": {
     "ws": "^8.18.0"
+  },
+  "devDependencies": {
+    "electron": "^33.0.0",
+    "electron-builder": "^25.1.8"
+  },
+  "build": {
+    "appId": "com.bombastatus.app",
+    "productName": "Bombastatus",
+    "extraMetadata": {
+      "main": "src/tray/main.js"
+    },
+    "files": [
+      "src/**",
+      "config.example.json",
+      "package.json"
+    ],
+    "mac": {
+      "category": "public.app-category.utilities",
+      "extendInfo": {
+        "LSUIElement": true
+      }
+    },
+    "win": {
+      "target": "nsis"
+    },
+    "linux": {
+      "target": "AppImage"
+    }
   }
 }
