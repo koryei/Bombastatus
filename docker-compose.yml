@@ -1,0 +1,7 @@
+services:
+  bombastatus:
+    build: .
+    restart: always
+    env_file: .env
+    volumes:
+      - ./config.json:/app/config.json:ro
