@@ -54,13 +54,17 @@
       "category": "public.app-category.utilities",
       "extendInfo": {
         "LSUIElement": true
-      }
+      },
+      "identity": null,
+      "hardenedRuntime": false,
+      "gatekeeperAssess": false
     },
     "win": {
       "target": "nsis"
     },
     "linux": {
       "target": "AppImage"
-    }
+    },
+    "afterSign": "build/adhoc-sign.cjs"
   }
 }
