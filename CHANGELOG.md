@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.1
+
+- Fix: the macOS app is now ad-hoc signed, so it is no longer reported as "damaged" because of a broken signature on Apple Silicon.
+- Docs: first-launch instructions for macOS (`xattr -cr`), Windows (SmartScreen) and Linux (AppImage).
+
 ## 0.1.0
 
 First release.

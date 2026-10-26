@@ -1,6 +1,6 @@
 {
   "name": "bombastatus",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Keep a Discord account online 24/7 with a scheduled, auto-cycling custom status.",
   "author": "Koryei",
   "homepage": "https://github.com/koryei/Bombastatus#readme",
