@@ -76,7 +76,23 @@ npm run dist   # output in dist/
 
 The installed app stores `config.json` and `.env` in its per-user app-data folder; use the tray menu to open them. Set `BOMBASTATUS_HOME` to use a different folder.
 
-> Builds are **unsigned**. macOS may require right-click → Open the first time, and Windows SmartScreen may warn you.
+#### First launch (the app isn't notarized)
+
+I don't pay for Apple/Microsoft code-signing certificates, so your OS will warn you the first time. This is expected.
+
+**macOS**: if you see *"Bombastatus" is damaged and can't be opened* or *"can't be verified"*, the file is fine. macOS is just blocking a downloaded app that isn't notarized. Drag it to **Applications**, then run this once in Terminal:
+
+```bash
+xattr -cr /Applications/Bombastatus.app
+```
+
+Then open it normally. (Alternative: try to open it, then go to **System Settings → Privacy & Security** and click **Open Anyway**.)
+
+**Windows**: on the SmartScreen "Windows protected your PC" screen, click **More info → Run anyway**.
+
+**Linux**: make the AppImage executable and run it: `chmod +x Bombastatus-*.AppImage && ./Bombastatus-*.AppImage`.
+
+If you'd rather not trust a prebuilt binary, [run it from source](#quick-start) instead.
 
 ## Configuration
 
@@ -158,6 +174,7 @@ config.json ──► schedule engine ──► runner ──► gateway client 
 - **`Token rejected` / red dot**: the token is wrong or was invalidated by a password change. Copy a fresh one.
 - **Status doesn't show for others**: confirm you're not set to *invisible*, and that custom emoji are allowed for your account.
 - **Discord emailed me about a new login**: expected when connecting from a new machine or VM. Verify it in your normal client.
+- **macOS says the app is "damaged"**: run `xattr -cr /Applications/Bombastatus.app` once, then open it. See [First launch](#first-launch-the-app-isnt-notarized).
 - **`Electron failed to install correctly`**: delete `node_modules/electron` and run `npm install` again. If it persists, run `node node_modules/electron/install.js`.
 
 ## Development
